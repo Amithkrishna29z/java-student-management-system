@@ -31,9 +31,13 @@ javac Student.java
 ```bash
 javac GradeManager.java
 
+```
+
 ### ✅ Step 3: Run the program
 
 ```bash
 java GradeManager
+
+```
 
 
