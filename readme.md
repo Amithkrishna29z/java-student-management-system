@@ -1,12 +1,25 @@
-Build a simple console application where a teacher can:
+# 🎓 Student Grade Management System
 
-Add student names and marks
+A simple Java console application to manage student records — add students, calculate grades, search, edit, and delete student information.
 
-Calculate grade based on the marks
+---
 
-Display student details with grades
+## 📋 Features
 
- ### how to run 
-  step 1: javac Student.java
-  step 2: javac GradeManager.java
-  step 3: java GradeManager
+- Add new students with marks
+- Automatically calculate grades based on marks
+- Display list of all students
+- Search for a student by name
+- Edit student information
+- Delete student records
+
+---
+
+## 🚀 How to Run the Project
+
+> 📌 Requirements: Java must be installed and added to your system PATH.
+
+### ✅ Step 1: Compile the `Student` class
+
+```bash
+javac Student.java
