@@ -22,7 +22,7 @@ A simple Java console application to manage student records — add students, ca
 ### ✅ Step 1: Compile the `Student` class
 
 ```bash
-javac Student.java
+javac Student.java ```
 
 ### ✅ Step 2: Compile the `GradeManager` class
 
