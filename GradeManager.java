@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.File;
 
 
 public class GradeManager {
@@ -35,13 +37,21 @@ public class GradeManager {
                 break;
 
                 case 6:
+               saveToFile();
+                break;
+
+                case 7:
+               loadFromFile();
+                break;
+
+                case 8:
                 System.out.println("Exiting the program. Goodbye!");
                 break;
 
                 default:
                 System.out.println("Invalid option. Please try again.");
             }
-        }while(choice!=6);
+        }while(choice!=8);
         
     }
 
@@ -52,7 +62,9 @@ public class GradeManager {
         System.out.println("3. Search Student by Name");
         System.out.println("4. Edit Student by Name");
         System.out.println("5. Delete Student by Name");  
-        System.out.println("6. Exit");
+        System.out.println("6. Save Student Data to File");  
+        System.out.println("7. Load Student Data from file");  
+        System.out.println("8. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -148,5 +160,45 @@ public class GradeManager {
             students.remove(found);
             System.out.println("Student deleted successfully");
         } 
+    }
+
+    static void saveToFile() {
+
+        try {
+            FileWriter writer = new FileWriter("students.txt");
+
+            for (Student s: students) {
+                writer.write("Name: "+ s.name + ", Marks: "+s.marks+", Grade: "+s.grade + "\n");
+            }
+            writer.close();
+            System.out.println("Student data saved to 'students.txt' successfully.");
+        } catch (Exception e) {
+           System.out.println("error occurred while saving: "+e.getMessage());
+        }
+    }
+
+    static void loadFromFile() {
+        try {
+            File file = new File("students.txt");
+            Scanner fileScanner = new Scanner(file);
+
+            students.clear();
+
+            while(fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+
+                String[] parts = line.split(", ");
+                String name=parts[0].split(":")[1];
+                int marks = Integer.parseInt(parts[1].split(": ")[1]);
+                String grade = parts[2].split(": ")[1];
+
+                students.add(new Student(name,marks,grade));
+            }
+
+            fileScanner.close();
+            System.out.println("Student data loaded from 'student.txt' successfully");
+        } catch (Exception e) {
+            System.out.println("Error loading data: " + e.getMessage());
+        }
     }
 }
